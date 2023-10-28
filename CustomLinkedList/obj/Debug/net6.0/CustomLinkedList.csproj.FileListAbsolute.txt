@@ -1,0 +1,11 @@
+C:\Users\twotw\source\repos\CPU_Scheduling_ConsoleApp\CustomLinkedList\bin\Debug\net6.0\CustomLinkedList.deps.json
+C:\Users\twotw\source\repos\CPU_Scheduling_ConsoleApp\CustomLinkedList\bin\Debug\net6.0\CustomLinkedList.dll
+C:\Users\twotw\source\repos\CPU_Scheduling_ConsoleApp\CustomLinkedList\bin\Debug\net6.0\CustomLinkedList.pdb
+C:\Users\twotw\source\repos\CPU_Scheduling_ConsoleApp\CustomLinkedList\obj\Debug\net6.0\CustomLinkedList.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\twotw\source\repos\CPU_Scheduling_ConsoleApp\CustomLinkedList\obj\Debug\net6.0\CustomLinkedList.AssemblyInfoInputs.cache
+C:\Users\twotw\source\repos\CPU_Scheduling_ConsoleApp\CustomLinkedList\obj\Debug\net6.0\CustomLinkedList.AssemblyInfo.cs
+C:\Users\twotw\source\repos\CPU_Scheduling_ConsoleApp\CustomLinkedList\obj\Debug\net6.0\CustomLinkedList.csproj.CoreCompileInputs.cache
+C:\Users\twotw\source\repos\CPU_Scheduling_ConsoleApp\CustomLinkedList\obj\Debug\net6.0\CustomLinkedList.dll
+C:\Users\twotw\source\repos\CPU_Scheduling_ConsoleApp\CustomLinkedList\obj\Debug\net6.0\refint\CustomLinkedList.dll
+C:\Users\twotw\source\repos\CPU_Scheduling_ConsoleApp\CustomLinkedList\obj\Debug\net6.0\CustomLinkedList.pdb
+C:\Users\twotw\source\repos\CPU_Scheduling_ConsoleApp\CustomLinkedList\obj\Debug\net6.0\ref\CustomLinkedList.dll
