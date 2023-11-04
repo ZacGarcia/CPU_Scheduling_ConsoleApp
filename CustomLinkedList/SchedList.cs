@@ -19,13 +19,12 @@
         //ADD NEW LIST
         public void AddNewList(int ATime, int Btime)
         {
-            string proc = "P";
+            
 
             if (this.head == null && Count == 0)
             {
                 Node newnode = new Node();
-
-                proc = Convert.ToString(Count + 1);
+                string proc = "P" + Convert.ToString(Count + 1);
                 newnode.setData(proc, ATime, Btime);
                 this.head = newnode;
                 this.tail = newnode;
@@ -37,7 +36,7 @@
             {
                 Node newnode = new Node();
 
-                proc = Convert.ToString(Count + 1);
+                string proc ="P" + Convert.ToString(Count + 1);
                 newnode.setData(proc, ATime, Btime);
                 this.tail.Next = newnode;
                 this.tail = newnode;

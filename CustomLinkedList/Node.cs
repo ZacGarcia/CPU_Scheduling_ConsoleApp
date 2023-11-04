@@ -14,7 +14,8 @@ namespace CustomLinkedList
         public int CTime;   
         public int TATime;
         public int WTime;
-
+        public int Priority;
+        public int RTime;
         public Node Next;
         
     
@@ -27,8 +28,20 @@ namespace CustomLinkedList
             this.CTime = 0;
             this.TATime = 0;
             this.WTime = 0;
-
+            this.Priority = 0;
+            this.RTime = 0;
             Console.WriteLine("Stored");
+        }
+
+
+        public void ResetData()
+        {
+            this.CTime = 0;
+            this.TATime = 0;
+            this.WTime = 0;
+            this.RTime = 0;
+            Console.WriteLine("Reset");
+
         }
         public void UpdateData(string p, int at, int bt, int ct, int tat, int wt)
         {
