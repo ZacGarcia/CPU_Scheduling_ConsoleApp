@@ -34,12 +34,13 @@ namespace CustomLinkedList
         }
 
 
-        public void ResetData()
+        public void ResetData(Node n)
         {
-            this.CTime = 0;
-            this.TATime = 0;
-            this.WTime = 0;
-            this.RTime = 0;
+            n.CTime = 0;
+            n.TATime = 0;
+            n.WTime = 0;
+            n.RTime = 0;
+            n.Priority = 0;
             Console.WriteLine("Reset");
 
         }

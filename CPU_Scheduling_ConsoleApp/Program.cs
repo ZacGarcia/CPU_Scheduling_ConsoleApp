@@ -42,7 +42,7 @@ namespace CPU_Scheduling_ConsoleApp
                 switch (choice)
                 {
                     case '1':
-                        _ = new FirstComeFirstServe(list);
+                        FirstComeFirstServe f = new FirstComeFirstServe(list);
                         break;
                     case '2':
                         ShortJobFrist_NonPreemptive s = new ShortJobFrist_NonPreemptive(list);
@@ -51,7 +51,7 @@ namespace CPU_Scheduling_ConsoleApp
                         LongestJobFirst_NonPreemptive l = new LongestJobFirst_NonPreemptive(list);
                         break;
                     case '4':
-                        _ = new Priorty(list);
+                        Priority p = new Priority(list);
                         break;
                     case '5':
                        

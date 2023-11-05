@@ -38,16 +38,16 @@ namespace CPU_Scheduling_ConsoleApp
            
 
         //SORT BY PRIOTIY
-        public static void SortByPriority(SchedList l)
+        public static void SortByPriority(Node node)
         {
-            if (l.head != null && l.Count != 0)
+            if (node != null )
             {
-                Node node = l.head;
+                
                 Node nxtNode = null;
                 while (node != null)
                 {
 
-                    node.ResetData();
+                    
                     nxtNode = node.Next;
                     while (nxtNode != null)
                     {
@@ -67,20 +67,20 @@ namespace CPU_Scheduling_ConsoleApp
                 Console.Write("List is empty");
             }
             Console.WriteLine("Sorted by priority");
-            PrintTable2(l);
+            
         }
 
         //SORT BY ARRIVAL TIME
-        public static void SortByArrival(SchedList l)
+        public static void SortByArrival(Node node)
         {
-            if (l.head != null && l.Count != 0)
+            if (node != null)
             {
-                Node node = l.head;
+                
                 Node nxtNode = null;
                 while (node != null)
                 {
 
-                    node.ResetData();
+                    node.ResetData(node);
                     nxtNode = node.Next;
                     while (nxtNode != null)
                     {
@@ -100,7 +100,6 @@ namespace CPU_Scheduling_ConsoleApp
                 Console.Write("List is empty");
             }
             Console.WriteLine("Sorted by arrival");
-            PrintTable(l);
         }
 
         //COMPUTE TIME
@@ -178,11 +177,11 @@ namespace CPU_Scheduling_ConsoleApp
         public FirstComeFirstServe(SchedList l)
         {
             float totalWT = 0, totalTAT = 0;
-            SortByArrival(l);
+            
             Console.WriteLine("Calculated");
             Node node = l.head;
             Node prevnode = null;
-
+            SortByArrival(node);
             while (node != null)
             {
                 CalculateTime(node, prevnode);
@@ -214,7 +213,7 @@ namespace CPU_Scheduling_ConsoleApp
             Node prevnode = null;
 
             float totalWT = 0, totalTAT = 0;
-            SortByArrival(l);
+            SortByArrival(node);
             Console.WriteLine("Calculated");
             while (node != null)
             {
@@ -249,7 +248,7 @@ namespace CPU_Scheduling_ConsoleApp
             Node prevnode = null;
 
             float totalWT = 0, totalTAT = 0;
-            SortByArrival(l);
+            SortByArrival(node);
             Console.WriteLine("Calculated");
             while (node != null)
             {
@@ -276,14 +275,15 @@ namespace CPU_Scheduling_ConsoleApp
     }
 
     //PRIORITY FIRST
-    public class Priorty : Scheduling
+    public class Priority : Scheduling
     {
-        public Priorty(SchedList p)
+        public Priority(SchedList p)
         {
             Node node = p.head;
 
             while (node != null)
             {
+                node.ResetData(node);
                 Console.Write("Input priority number for {0}:" , node.Pnum);
                 node.Priority = Convert.ToInt32(Console.ReadLine());
                 node = node.Next;
@@ -295,12 +295,12 @@ namespace CPU_Scheduling_ConsoleApp
         {
             float totalWT = 0, totalTAT = 0;
 
-            SortByPriority(l);
+            
             Console.WriteLine("Calculated");
             Node node = l.head;
             Node prevnode = null;
             int tempBtime = node.BTime;
-
+            SortByPriority(node);
             while (node != null)
             {
                 //WAITING TIME
@@ -342,7 +342,9 @@ namespace CPU_Scheduling_ConsoleApp
                 node = node.Next;
             }
 
+            //AVERAGE WAITING TIME
             float averageWT = totalWT / l.Count;
+            //AVERAGE TURN AROUND TIME
             float averageTAT = totalTAT / l.Count;
             PrintTable2(l);
             Console.WriteLine("\nAverage Waiting time is: {0}", averageWT);
