@@ -54,7 +54,7 @@ namespace CPU_Scheduling_ConsoleApp
                         Priority p = new Priority(list);
                         break;
                     case '5':
-                       
+                        RoundRobin r = new RoundRobin(list);
                         break;
                     case '0':
                         schedFlag = false;

@@ -12,7 +12,7 @@ namespace CPU_Scheduling_ConsoleApp
 {
     public class Scheduling
     {
-        //SWITCH CURRENT NODE AND NEXT NODE
+        //SWITCH CURRENT NODE AND NEXT NODE FUNCTION
         public static void SwitchNode(Node point)
         {
 
@@ -35,9 +35,40 @@ namespace CPU_Scheduling_ConsoleApp
             nxtNode.BTime = tempBT;
             nxtNode.Priority = tempPrio;
         }
-           
 
-        //SORT BY PRIOTIY
+        //SORT BY BURST TIME FUNCTION
+        public static void SortByBurstTime(Node node)
+        {
+            if (node != null)
+            {
+
+                Node nxtNode = null;
+                while (node != null)
+                {
+
+                    node.ResetData(node);
+                    nxtNode = node.Next;
+                    while (nxtNode != null)
+                    {
+                        if (nxtNode.BTime < node.BTime)
+                        {
+                            SwitchNode(node);
+
+                            Console.WriteLine("Sorted");
+                        }
+                        nxtNode = nxtNode.Next;
+                    }
+                    node = node.Next;
+                }
+            }
+            else
+            {
+                Console.Write("List is empty");
+            }
+            Console.WriteLine("Sorted by burst time");
+        }
+
+        //SORT BY PRIOTIY FUNCTION
         public static void SortByPriority(Node node)
         {
             if (node != null )
@@ -70,7 +101,7 @@ namespace CPU_Scheduling_ConsoleApp
             
         }
 
-        //SORT BY ARRIVAL TIME
+        //SORT BY ARRIVAL TIME FUNCTION
         public static void SortByArrival(Node node)
         {
             if (node != null)
@@ -102,7 +133,7 @@ namespace CPU_Scheduling_ConsoleApp
             Console.WriteLine("Sorted by arrival");
         }
 
-        //COMPUTE TIME
+        //COMPUTE TIME FUNCTION
         public static void CalculateTime(Node n, Node prev)
         {
             if (prev != null)
@@ -125,7 +156,7 @@ namespace CPU_Scheduling_ConsoleApp
             n.CTime = n.ATime + n.TATime;
         }
 
-        //PRINT TABLE
+        //PRINT TABLE FUNCTION
         public static void PrintTable(SchedList l)
         {
             Node temp = l.head;
@@ -281,8 +312,10 @@ namespace CPU_Scheduling_ConsoleApp
         {
             Node node = p.head;
 
+            //INPUT PRIORITY NUMBER
             while (node != null)
             {
+                //RESET DATA(WT,TAT,RT,CT,prevPRIORITY)
                 node.ResetData(node);
                 Console.Write("Input priority number for {0}:" , node.Pnum);
                 node.Priority = Convert.ToInt32(Console.ReadLine());
@@ -346,10 +379,68 @@ namespace CPU_Scheduling_ConsoleApp
             float averageWT = totalWT / l.Count;
             //AVERAGE TURN AROUND TIME
             float averageTAT = totalTAT / l.Count;
+
+            //PRINT TABLE
             PrintTable2(l);
             Console.WriteLine("\nAverage Waiting time is: {0}", averageWT);
             Console.WriteLine("\nAverage Turn Around time is: {0}", averageTAT);
             
+        }
+    }
+
+    //ROUND ROBIN
+    public class RoundRobin : Scheduling
+    {
+        private int qTime;
+
+        public RoundRobin(SchedList r)
+        {
+            Node node = r.head;
+            Node prevnode = null;
+            float totalWT = 0, totalTAT = 0;
+            int existTime = 0;
+            int remB, qoutB;
+
+            //INPUT TIME QUANTUM
+            Console.WriteLine("Input Time Quantum: ");
+            qTime = Convert.ToInt32(Console.Read());
+
+            Console.WriteLine("Calculated");
+            
+            //SORT BY BURST TIME
+            SortByBurstTime(node);
+            while (node != null)
+            {
+                //COMPUTE COMPLETE TIME
+                if (node.BTime <= qTime)
+                {
+                    node.CTime = (node.ATime * qTime) + node.BTime;
+                    existTime = existTime + (qTime - node.BTime);
+                }
+                else
+                {
+                    qoutB = node.BTime / qTime;
+                    remB = node.BTime % qTime;
+                    node.CTime = (((r.Count * qTime) * qoutB) - existTime) + remB;
+                }
+
+                //COMPUTE TURN AROUND TIME AND WAITINGT TIME
+                node.TATime = node.CTime - node.ATime;
+                node.WTime = node.TATime - node.BTime;
+
+                //COMPUTE TOTAL
+                totalWT += node.WTime;
+                totalTAT += node.TATime;
+                prevnode = node;
+                node = node.Next;
+            }
+            //COMPUTE FOR THE AVERAGE
+            float averageWT = totalWT / r.Count;
+            float averageTAT = totalTAT / r.Count;
+            PrintTable(r);
+            Console.WriteLine("\nAverage Waiting time is: {0}ms", averageWT);
+            Console.WriteLine("\nAverage Turn Around time is: {0}ms", averageTAT);
+
         }
     }
    
