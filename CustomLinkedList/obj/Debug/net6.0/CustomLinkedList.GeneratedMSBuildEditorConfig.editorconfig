@@ -9,3 +9,5 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CustomLinkedList
 build_property.ProjectDir = C:\Users\twotw\source\repos\CPU_Scheduling_ConsoleApp\CustomLinkedList\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
